@@ -137,7 +137,7 @@ function check(x,y){
     checkrightup(x,y);
 }
 
-//вычисление
+//действие
 function matrixArray(rows,columns){
     var arr = new Array();
     for(var i=0; i<rows; i++){
