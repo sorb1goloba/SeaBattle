@@ -29,7 +29,7 @@ function drawSquare(x,y){
     ctx.fillStyle="#87CEEB";
     ctx.fillRect(x+1,y+1,28,28);
 }
-//вычисление
+//действие
 function checker(x,y,t,k){
     if (k==1){
         for (let j=x;j>x+t;j--)
@@ -61,7 +61,7 @@ function checker(x,y,t,k){
     } 
 }
 
-//вычисление
+//действие
 function checkright(x,y){
     if (x+1<10){
         if (myMatrix[y][x+1]==0)
@@ -69,7 +69,7 @@ function checkright(x,y){
     }
 }
 
-//вычисление
+//действие
 function checkleft(x,y){
     if (x-1>=0){
         if (myMatrix[y][x-1]==0)
@@ -77,7 +77,7 @@ function checkleft(x,y){
     }
 }
 
-//вычисление
+//действие
 function checkup(x,y){
     if (y-1>=0){
         if (myMatrix[y-1][x]==0)
@@ -85,7 +85,7 @@ function checkup(x,y){
     }
 }
 
-//вычисление
+//действие
 function checkdown(x,y){
     if (y+1<10){
         if (myMatrix[y+1][x]==0)
@@ -93,7 +93,7 @@ function checkdown(x,y){
     }
 }
 
-//вычисление
+//действие
 function checkleftup(x,y){
     if ((x-1>=0)&& (y-1>=0)){
         if (myMatrix[y-1][x-1]==0)
@@ -101,7 +101,7 @@ function checkleftup(x,y){
     }
 }
 
-//вычисление
+//действие
 function checkrightup(x,y){
     if ((x+1<10)&& (y-1>=0)){
         if (myMatrix[y-1][x+1]==0)
@@ -109,7 +109,7 @@ function checkrightup(x,y){
     }
 }
 
-//вычисление
+//действие
 function checkrightdown(x,y){
     if ((x+1<10)&& (y+1<10)){
         if (myMatrix[y+1][x+1]==0)
@@ -117,7 +117,7 @@ function checkrightdown(x,y){
     }
 }
 
-//вычисление
+//действие
 function checkleftdown(x,y){
     if ((x-1>=0)&& (y+1<10)){
         if (myMatrix[y+1][x-1]==0)
