@@ -1,6 +1,8 @@
 var cvs=document.getElementById("canvas");
 var ctx=cvs.getContext("2d");
 var myMatrix = matrixArray(10,10);
+
+//действие
 function pole(){
     var x=30;
     var y=30;
@@ -21,10 +23,14 @@ function pole(){
     }
     ctx.stroke();
 }
+
+//действие
 function drawSquare(x,y){
     ctx.fillStyle="#87CEEB";
     ctx.fillRect(x+1,y+1,28,28);
 }
+
+//вычисление
 function checkright(x,y){
     if (x+1<10)
     {
@@ -32,6 +38,8 @@ function checkright(x,y){
     myMatrix[y][x+1]=1;
     }
 }
+
+//вычисление
 function checkleft(x,y){
     if (x-1>=0)
     {
@@ -39,6 +47,8 @@ function checkleft(x,y){
     myMatrix[y][x-1]=1;
     }
 }
+
+//вычисление
 function checkup(x,y){
     if (y-1>=0)
     {
@@ -46,6 +56,8 @@ function checkup(x,y){
     myMatrix[y-1][x]=1;
     }
 }
+
+//вычисление
 function checkdown(x,y){
     if (y+1<10)
     {
@@ -53,6 +65,8 @@ function checkdown(x,y){
     myMatrix[y+1][x]=1;
     }
 }
+
+//вычисление
 function checkleftup(x,y){
     if ((x-1>=0)&& (y-1>=0))
     {
@@ -60,6 +74,8 @@ function checkleftup(x,y){
     myMatrix[y-1][x-1]=1;
     }
 }
+
+//вычисление
 function checkrightup(x,y){
     if ((x+1<10)&& (y-1>=0))
     {
@@ -67,6 +83,8 @@ function checkrightup(x,y){
     myMatrix[y-1][x+1]=1;
     }
 }
+
+//вычисление
 function checkrightdown(x,y){
     if ((x+1<10)&& (y+1<10))
     {
@@ -74,6 +92,8 @@ function checkrightdown(x,y){
     myMatrix[y+1][x+1]=1;
     }
 }
+
+//вычисление
 function checkleftdown(x,y){
     if ((x-1>=0)&& (y+1<10))
     {
@@ -81,6 +101,8 @@ function checkleftdown(x,y){
     myMatrix[y+1][x-1]=1;
     }
 }
+
+//действие
 function check(x,y){
 checkleft(x,y);
 checkright(x,y);
@@ -91,6 +113,8 @@ checkleftup(x,y);
 checkrightdown(x,y);
 checkrightup(x,y);
 }
+
+//вычисление
 function matrixArray(rows,columns){
     var arr = new Array();
     for(var i=0; i<rows; i++){
@@ -100,10 +124,14 @@ function matrixArray(rows,columns){
       }
     }
     return arr;
-  }
+  }//явный выход
+
+//действие  
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
+
+//действие
 function fourSquares(){
     let x=getRandomInt(10);
     let y=getRandomInt(10);
@@ -135,7 +163,9 @@ function fourSquares(){
                 }
             } 
         }
-}
+}//неявный вход
+
+//действие
 function threeSquares(){
     let x=getRandomInt(10);
     let y=getRandomInt(10);
@@ -186,7 +216,9 @@ function threeSquares(){
         }
 
     }
-}
+}//неявный вход
+
+//действие
 function doubleSquares()
 {
 let x=getRandomInt(10);
@@ -238,7 +270,9 @@ else {
     }
 
 }
-}
+}//неявный вход
+
+//действие
 function oneSquares()
 {
 let x=getRandomInt(10);
@@ -251,7 +285,9 @@ else
     myMatrix[y][x]=1;
     check(x,y);
 }
-}
+}//неявный вход
+
+//действие
 function main(){
 pole();
 fourSquares();
