@@ -30,6 +30,37 @@ function drawSquare(x,y){
     ctx.fillRect(x+1,y+1,28,28);
 }
 
+function checker(x,y,t,k){
+    if (k==1){
+        for (let j=x;j>x+t;j--)
+            {
+                myMatrix[y][j]=1;
+                check(j,y);
+            }
+    }
+    if (k==2){
+        for (let j=y;j<y+t;j++)
+        {
+            myMatrix[j][x]=1;
+            check(x,j);
+        }   
+    }
+    if(k==3){
+        for (let j=x;j<x+t;j++)
+            {
+                myMatrix[y][j]=1;
+                check(j,y);
+            }
+    }
+    if(k==4){
+        for (let j=y;j>y+t;j--)
+            {
+                myMatrix[j][x]=1;
+                check(x,j);
+            }
+    } 
+}
+
 //вычисление
 function checkright(x,y){
     if (x+1<10)
@@ -126,10 +157,10 @@ function matrixArray(rows,columns){
     return arr;
   }//явный выход
 
-//действие  
+//действие
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
-  }
+  }//явный выход
 
 //действие
 function fourSquares(){
@@ -139,28 +170,16 @@ function fourSquares(){
     drawSquare(x*30+30,y*30+30);
     if (y-3>=0)//up direction
     {drawSquare(x*30+30,y*30);drawSquare(x*30+30,(y-1)*30);drawSquare(x*30+30,(y-2)*30);
-       for (let j=y;j>y-4;j--)
-       {
-       myMatrix[j][x]=1;
-       check(x,j);
-       }
+       checker(x,y,-4,4)
     }
     else {
          if (x-3>=0)//left direction
          {drawSquare(x*30,y*30+30);drawSquare((x-1)*30,y*30+30);drawSquare((x-2)*30,y*30+30);
-            for (let j=x;j>x-4;j--)
-            {
-            myMatrix[y][j]=1;
-            check(j,y);
-            }
+            checker(x,y,-4,1)
          }
          else   //down direction 
             {drawSquare(x*30+30,(y+3)*30);drawSquare(x*30+30,(y+4)*30);drawSquare(x*30+30,(y+2)*30);
-                for (let j=y;j<y+4;j++)
-                {
-                myMatrix[j][x]=1;
-                check(x,j);
-                }
+                checker(x,y,4,2)
             } 
         }
 }//неявный вход
@@ -175,40 +194,24 @@ function threeSquares(){
     { 
         if ((y-2>=0)&&(myMatrix[y-1][x]!=1)&&(myMatrix[y-2][x]!=1))//up direction
     {drawSquare(x*30+30,y*30);drawSquare(x*30+30,(y-1)*30);drawSquare(x*30+30,y*30+30);
-       for (let j=y;j>y-3;j--)
-       {
-       myMatrix[j][x]=1;
-       check(x,j);
-       }
+       checker(x,y,-3,4)
     }
     else {
          if ((x-2>=0)&&(myMatrix[y][x-1]!=1)&&(myMatrix[y][x-2]!=1))//left direction
          {drawSquare(x*30,y*30+30);drawSquare((x-1)*30,y*30+30);drawSquare(x*30+30,y*30+30);
-            for (let j=x;j>x-3;j--)
-            {
-            myMatrix[y][j]=1;
-            check(j,y);
-            }
+            checker(x,y,-3,1)
          }
          else//down direction 
             {   
                 if ((y+2<10)&&(myMatrix[y+2][x]!=1)&&(myMatrix[y+1][x]!=1))
                 {drawSquare(x*30+30,(y+3)*30);drawSquare(x*30+30,(y+2)*30);drawSquare(x*30+30,y*30+30);
-                  for (let j=y;j<y+3;j++)
-                  {
-                  myMatrix[j][x]=1;
-                   check(x,j);
-                  }
+                  checker(x,y,3,2)
                 } 
                 else//right direction
                 {   
                     if ((x+2<10)&&(myMatrix[y][x+1]!=1)&&(myMatrix[y][x+2]!=1))
                     {drawSquare((x+2)*30,y*30+30);drawSquare((x+3)*30,y*30+30);drawSquare(x*30+30,y*30+30);
-                      for (let j=x;j<x+3;j++)
-                      {
-                      myMatrix[y][j]=1;
-                      check(j,y);
-                      }
+                      checker(x,y,3,3)
                     }
                     else threeSquares();
                 }
@@ -229,40 +232,24 @@ else
 { 
     if ((y-1>=0)&&(myMatrix[y-1][x]!=1))//up direction
 {drawSquare(x*30+30,y*30);drawSquare(x*30+30,y*30+30);
-   for (let j=y;j>y-2;j--)
-   {
-   myMatrix[j][x]=1;
-   check(x,j);
-   }
+   checker(x,y,-2,4);
 }
 else {
      if ((x-1>=0)&&(myMatrix[y][x-1]!=1))//left direction
      {drawSquare(x*30,y*30+30);drawSquare(x*30+30,y*30+30);
-        for (let j=x;j>x-2;j--)
-        {
-        myMatrix[y][j]=1;
-        check(j,y);
-        }
+        checker(x,y,-2,1)
      }
          else//down direction 
             {   
                 if ((y+1<10)&&(myMatrix[y+1][x]!=1))
                 {drawSquare(x*30+30,(y+2)*30);drawSquare(x*30+30,y*30+30);
-                  for (let j=y;j<y+2;j++)
-                  {
-                  myMatrix[j][x]=1;
-                   check(x,j);
-                  }
+                  checker(x,y,2,2)
                 } 
                 else//right direction
                 {   
                     if ((x+1<10)&&(myMatrix[y][x+1]!=1))
                     {drawSquare((x+2)*30,y*30+30);drawSquare(x*30+30,y*30+30);
-                      for (let j=x;j<x+2;j++)
-                      {
-                      myMatrix[y][j]=1;
-                      check(j,y);
-                      }
+                      checker(x,y,2,3)
                     }
                     else doubleSquares();
                 }
